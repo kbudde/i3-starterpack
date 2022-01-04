@@ -1,5 +1,5 @@
 [global]
-monitor = 0
+monitor = 2
 follow = mouse
 geometry = "250x50-24+24"
 indicate_hidden = yes
@@ -38,12 +38,12 @@ context = ctrl+shift+period
 [urgency_low]
 background = "#2f343f"
 foreground = "#d8dee8"
-timeout = 2
+timeout = 4
 
 [urgency_normal]
 background = "#2f343f"
 foreground = "#d8dee8"
-timeout = 4
+timeout = 6
 
 [urgency_critical]
 background = "#2f343f"

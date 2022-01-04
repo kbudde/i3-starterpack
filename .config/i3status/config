@@ -4,18 +4,18 @@ general {
         markup = pango
         interval = 5
         color_good = '#2f343f'
-		color_degraded = '#ebcb8b'
-		color_bad = '#ba5e57'
+        color_degraded = '#ebcb8b'
+        color_bad = '#ba5e57'
 }
 
 order += "load"
 order += "cpu_temperature 0"
 order += "disk /"
 order += "disk /home"
-order += "ethernet enp1s0"
-order += "wireless wlp2s0"
-order += "volume master"
-order += "battery 1"
+order += "ethernet enx381428d5f814"
+order += "wireless wlp0s20f3"
+order += "path_exists VPN"
+#order += "volume master"
 order += "tztime local"
 
 load {
@@ -35,12 +35,12 @@ disk "/home" {
         format = "<span background='#a1d569'>  %free Free </span>"
 }
 
-ethernet enp1s0 {
+ethernet enx381428d5f814 {
         format_up = "<span background='#88c0d0'>  %ip </span>"
         format_down = "<span background='#88c0d0'>  Disconnected </span>"
 }
 
-wireless wlp2s0 {
+wireless wlp0s20f3 {
         format_up = "<span background='#b48ead'>  %essid </span>"
         format_down = "<span background='#b48ead'>  Disconnected </span>"
 }
@@ -53,17 +53,13 @@ volume master {
         mixer_idx = 0
 }
 
-battery 1 {
-	last_full_capacity = true
-        format = "<span background='#a3be8c'>  %status %percentage </span>"
-        format_down = "No Battery"
-        status_chr = "Charging"
-        status_bat = "Battery"
-        status_unk = "Unknown"
-        status_full = "Charged"
-        path = "/sys/class/power_supply/BAT%d/uevent"
-        low_threshold = 10
+path_exists VPN {
+        # path exists when a VPN tunnel launched by nmcli/nm-applet is active
+        path = "/proc/sys/net/ipv4/conf/tun0"
+        format = "<span background='#ebcb8b'> 🔐 </span>"
+        format_down="<span background='#6E3C00'> 🔓 </span>"
 }
+
 
 tztime local {
 		format = "<span background='#81a1c1'> %time </span>"
