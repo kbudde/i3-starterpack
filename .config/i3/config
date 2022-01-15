@@ -4,6 +4,7 @@ set $alt Mod1
 
 # set font
 font pango: Noto Sans 8
+focus_follows_mouse no
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
