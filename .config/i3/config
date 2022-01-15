@@ -72,6 +72,7 @@ bindsym $super+s layout toggle split
 
 bindsym $super+x layout toggle splitv tabbed
 
+
 # toggle tiling / floating
 bindsym $super+space floating toggle
 
@@ -82,7 +83,9 @@ bindsym $super+Shift+space focus mode_toggle
 bindsym $alt+Control+Right move workspace to output right 
 bindsym $alt+Control+Left move workspace to output left
 
+
 # switch to workspace
+#bindsym $super+Ctrl+3 workspace 3:<span foreground="red">vim</span>
 bindsym $super+Control+Up workspace next
 bindsym $super+Control+Down workspace prev
 bindsym $super+1 workspace 1
@@ -126,8 +129,9 @@ bindsym $super+r mode "resize"
 
 # panel
 bar {
-	position bottom
+	position top
 	tray_output primary
+	
 	colors {
 		background #2f343f
 		statusline #2f343f
@@ -140,6 +144,7 @@ bar {
 		urgent_workspacei       #2f343f #ebcb8b #2f343f
 	}
 	status_command i3status
+	
 }
 
 
@@ -150,15 +155,19 @@ bar {
 #assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 5
 #assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|Exo-helper*|Lxrandr|Arandr] 6
 
+#bindsym $mod+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+
+
 # window rules, you can find the window class using "xprop WM_CLASS"
 # https://i3wm.org/docs/userguide.html#command_criteria
 bindsym $super+i exec ~/.config/i3_scripts/window_class.sh
 for_window [class=".*"] border pixel 4
 # for_window [class="Org.gnome.Nautilus"] kill
-for_window [class=keepassxc|yubioath-desktop] floating enable
-for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
-for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
-for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
+for_window [class=yubioath-desktop] floating enable
+for_window [class=keepassxc] floating enable resize set 640 480 
+#for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
+#for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
+#for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 # for_window [class="zoom"] floating enable
 # for_window [class="slack"] floating enable
 # colour of border, background, text, indicator, and child_border
