@@ -14,8 +14,8 @@ order += "disk /"
 order += "disk /home"
 order += "ethernet enx381428d5f814"
 order += "wireless wlp0s20f3"
+order += "volume blue"
 order += "path_exists VPN"
-#order += "volume master"
 order += "tztime local"
 
 load {
@@ -42,13 +42,13 @@ ethernet enx381428d5f814 {
 
 wireless wlp0s20f3 {
         format_up = "<span background='#b48ead'>  %essid </span>"
-        format_down = "<span background='#b48ead'>  Disconnected </span>"
+        format_down = "<span background='#b48ead'>  </span>"
 }
 
-volume master {
+volume blue {
         format = "<span background='#ebcb8b'>  %volume </span>"
         format_muted = "<span background='#ebcb8b'>  Muted </span>"
-        device = "default"
+        device = "pulse:4"
         mixer = "Master"
         mixer_idx = 0
 }
@@ -56,8 +56,8 @@ volume master {
 path_exists VPN {
         # path exists when a VPN tunnel launched by nmcli/nm-applet is active
         path = "/proc/sys/net/ipv4/conf/tun0"
-        format = "<span background='#ebcb8b'> 🔐 </span>"
-        format_down="<span background='#6E3C00'> 🔓 </span>"
+        format = "<span background='#33334d'> 🔐 </span>"
+        format_down="<span background='#33334d'> 🔓 </span>"
 }
 
 

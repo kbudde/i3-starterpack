@@ -27,12 +27,13 @@ bindsym $super+Shift+w exec firefox
 bindsym $super+Shift+k exec keepassxc;workspace 1;focus
 bindsym $super+Shift+c exec code
 bindsym $super+Shift+y exec yubioath-desktop
+bindsym $super+Shift+s exec slack
 #bindsym $super+Shift+g exec geany
 
 #change volume
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
-bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(~/.config/i3_scripts/bluez_sink.sh) +5% 
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(~/.config/i3_scripts/bluez_sink.sh) -5% 
+bindsym XF86AudioMute exec pactl set-sink-mute $(~/.config/i3_scripts/bluez_sink.sh) toggle
 
 # music control
 bindsym XF86AudioNext exec mpc next
@@ -76,15 +77,22 @@ bindsym $super+space floating toggle
 # change focus between tiling / floating windows
 bindsym $super+Shift+space focus mode_toggle
 
+# https://faq.i3wm.org/question/591/move-workspace-to-other-monitor.1.html
+bindsym $alt+Control+Right move workspace to output right 
+bindsym $alt+Control+Left move workspace to output left
+
 # switch to workspace
-bindsym $alt+Control+Right workspace next
-bindsym $alt+Control+Left workspace prev
+bindsym $super+Control+Up workspace next
+bindsym $super+Control+Down workspace prev
 bindsym $super+1 workspace 1
 bindsym $super+2 workspace 2
 bindsym $super+3 workspace 3
 bindsym $super+4 workspace 4
 bindsym $super+5 workspace 5
 bindsym $super+6 workspace 6
+bindsym $super+7 workspace 7
+bindsym $super+8 workspace 8
+bindsym $super+9 workspace 9
 
 # move focused container to workspace
 bindsym $super+Shift+1 move container to workspace 1
@@ -93,12 +101,17 @@ bindsym $super+Shift+3 move container to workspace 3
 bindsym $super+Shift+4 move container to workspace 4
 bindsym $super+Shift+5 move container to workspace 5
 bindsym $super+Shift+6 move container to workspace 6
+bindsym $super+Shift+7 move container to workspace 7
+bindsym $super+Shift+8 move container to workspace 8
+bindsym $super+Shift+9 move container to workspace 9
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $super+Shift+r restart
 
 # exit i3
 bindsym $super+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
+bindsym $super+Shift+q exec "i3-nagbar -t warning -m 'Really, shutdown?' -b 'Yes' 'shutdown -h now'"
+bindsym $super+l exec i3lock && sleep 1s && xset s activate
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -112,6 +125,8 @@ bindsym $super+r mode "resize"
 
 # panel
 bar {
+	position bottom
+	tray_output primary
 	colors {
 		background #2f343f
 		statusline #2f343f
@@ -126,19 +141,25 @@ bar {
 	status_command i3status
 }
 
-# window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 4
+
 #assign [class=URxvt] 1
 #assign [class=Firefox|Transmission-gtk] 2
 #assign [class=Thunar|File-roller] 3
 #assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 4
 #assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 5
 #assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|Exo-helper*|Lxrandr|Arandr] 6
+
+# window rules, you can find the window class using "xprop WM_CLASS"
+# https://i3wm.org/docs/userguide.html#command_criteria
+bindsym $super+i exec ~/.config/i3_scripts/window_class.sh
+for_window [class=".*"] border pixel 4
+# for_window [class="Org.gnome.Nautilus"] kill
 for_window [class=keepassxc|yubioath-desktop] floating enable
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
-
+# for_window [class="zoom"] floating enable
+# for_window [class="slack"] floating enable
 # colour of border, background, text, indicator, and child_border
 client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
 client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
