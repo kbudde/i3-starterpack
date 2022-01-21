@@ -27,10 +27,8 @@ bindsym $super+w exec rofi -lines 12 -padding 18 -width 40 -location 0 -show win
 bindsym Print exec "flameshot gui"
 bindsym $super+Shift+w exec firefox
 bindsym $super+Shift+k exec keepassxc;workspace 1;focus
-bindsym $super+Shift+c exec code
-bindsym $super+Shift+y exec yubioath-desktop
+bindsym $super+Shift+c exec ~/.config/i3_scripts/project.sh
 bindsym $super+Shift+s exec slack
-#bindsym $super+Shift+g exec geany
 
 #change volume
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(~/.config/i3_scripts/bluez_sink.sh) +5% 
