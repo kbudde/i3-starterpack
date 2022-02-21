@@ -100,7 +100,7 @@ I set my Print Screen button to take screenshoot using scrot, then automatically
 Or if You don't have git package installed, and have no willing to install it. 
 Just use download as zip button on the top-right of this page, then extract it.
 After that, Open *i3-starterpack* folder. Then copy the configurations to your home.
-I mean if it's on *i3-starterpack/.config/i3/config*, copy it to *~/.config/i3/*.
+I mean if it's on *i3-starterpack/.config/i3/config*, copy it to *~/.config/i3/*.F
 If the folder doesn't exist on your home, just make it.
 Do the same with all of the files inside *i3-starterpack* folder.
 My dotfiles contains font, so refresh your fontconfig cache `fc-cache -fv` after You copy the font. <br />

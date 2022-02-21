@@ -1,5 +1,5 @@
 [global]
-monitor = 2
+monitor = 0
 follow = mouse
 geometry = "250x50-24+24"
 indicate_hidden = yes
