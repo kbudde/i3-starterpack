@@ -3,7 +3,7 @@ set $super Mod4
 set $alt Mod1
 
 # set font
-font pango: Noto Sans 8
+font pango: Noto Sans 6
 focus_follows_mouse yes
 
 # Use Mouse+$super to drag floating windows to their wanted position
@@ -15,6 +15,11 @@ exec --no-startup-id greenclip daemon
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
 exec --no-startup-id nm-applet &
+exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off --output DP-2-1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2-2 --off --output DP-2-3 --mode 1920x1080 --pos 3840x0 --rotate normal &
+
+workspace 1 output DP-2-1
+workspace 2 output eDP-1
+workspace 3 output DP-2-3
 
 # start a terminal
 bindsym $super+Return exec i3-sensible-terminal
@@ -72,6 +77,9 @@ bindsym $super+s layout toggle split
 
 bindsym $super+x layout toggle splitv tabbed
 
+#scratchpad
+#bindsym $super+Shift+s move scratchpad
+#bindsym $super+Ctrl+s scratchpad show
 
 # toggle tiling / floating
 bindsym $super+space floating toggle
@@ -164,13 +172,16 @@ bindsym $super+i exec ~/.config/i3_scripts/window_class.sh
 for_window [class=".*"] border pixel 4
 # for_window [class="Org.gnome.Nautilus"] kill
 #for_window [title="Zoom Cloud Meetings"] kill
-for_window [class=yubioath-desktop] floating enable
-for_window [class=keepassxc] floating enable resize set 640 480 
+#for_window [class=yubioath-desktop] floating enable
+for_window [class=keepassxc] floating enable resize set 640 480 focus
 #for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 #for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 #for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 # for_window [class="zoom"] floating enable
 # for_window [class="slack"] floating enable
+for_window [class="Slack"] floating enable  resize set 800 800
+for_window [class="Signal"] floating enable resize set 640 480 
+
 # colour of border, background, text, indicator, and child_border
 client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
 client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
