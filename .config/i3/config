@@ -42,11 +42,18 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(~/.config/i3_scripts/b
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(~/.config/i3_scripts/bluez_sink.sh) -5% 
 bindsym XF86AudioMute exec pactl set-sink-mute $(~/.config/i3_scripts/bluez_sink.sh) toggle
 
+bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% 
+bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% 
+bindsym Shift+XF86AudioMute exec pactl set-sink-mute 1 toggle
+
 # music control
 #bindsym XF86AudioNext exec notify-send "next"
 #bindsym XF86AudioPrev exec notify-send "prev"
 #bindsym XF86AudioPlay exec notify-send "toggle"
 
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
 
 # kill focused window
 #bindsym $super+c kill
