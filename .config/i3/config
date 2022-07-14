@@ -1,9 +1,11 @@
 # set modifier
 set $super Mod4
 set $alt Mod1
+set $font Fira Code 
+
 
 # set font
-font pango: Noto Sans 6
+font pango: $font 8
 focus_follows_mouse yes
 
 # Use Mouse+$super to drag floating windows to their wanted position
@@ -11,6 +13,7 @@ floating_modifier $super
 
 #autostart
 #exec --no-startup-id hsetroot -center ~/.wallpaper.png
+exec --no-startup-id numlockx on &
 exec --no-startup-id greenclip daemon
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
@@ -26,8 +29,8 @@ bindsym $super+Return exec i3-sensible-terminal
 
 # start dmenu (a program launcher)
 #bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
-bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 10'
-bindsym $super+w exec rofi -lines 12 -padding 18 -width 40 -location 0 -show window -font 'Noto Sans 10'
+bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font '$font 11'
+bindsym $super+w exec rofi -lines 12 -padding 18 -width 40 -location 0 -show window -font '$font 11'
 
 # common apps keybinds
 bindsym Print exec "flameshot gui"

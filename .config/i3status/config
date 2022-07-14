@@ -55,8 +55,8 @@ volume master {
 }
 
 volume blue {
-        format = "<span background='#ebcb8b'>  %volume </span>"
-        format_muted = "<span background='#ebcb8b'>  Muted </span>"
+        format = "<span background='#ebcb8b'> 🔉 %volume </span>"
+        format_muted = "<span background='#ebcb8b'> 🔇 Muted </span>"
         device = "pulse:4"
         mixer = "Master"
         mixer_idx = 0
