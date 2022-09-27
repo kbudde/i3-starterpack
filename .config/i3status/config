@@ -69,9 +69,7 @@ path_exists VPN {
         format_down="<span background='#33334d'> 🔓 </span>"
 }
 
-
 tztime local {
-		format = "<span background='#81a1c1'> %time </span>"
-		format_time = " %a %-d %b %H:%M"
+        format = "<span background='#81a1c1'> %a %-d %b <b>%H:%M</b> </span>"
+        locale = "en_IN.UTF-8"
 }
-
